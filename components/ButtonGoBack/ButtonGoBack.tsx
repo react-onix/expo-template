@@ -1,6 +1,6 @@
-import { Pressable, View } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import { useNavigation } from 'expo-router';
+import { Pressable, View } from 'react-native';
 
 import Colors from '@/constants/Colors';
 import { testIdButtonBack } from '@/constants/TestId';

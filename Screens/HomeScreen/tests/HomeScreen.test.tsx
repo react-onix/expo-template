@@ -1,7 +1,6 @@
-import HomeScreen from '../HomeScreen';
-
 import { render } from '@/__tests__/test-utils';
 import { testIdHomePage } from '@/constants/TestId';
+import HomeScreen from '../HomeScreen';
 
 describe('<HomeScreen />', () => {
   test('should render component HomeScreen', () => {

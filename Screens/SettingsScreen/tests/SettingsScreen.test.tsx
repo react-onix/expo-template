@@ -1,10 +1,8 @@
 import { fireEvent, waitFor } from '@testing-library/react-native';
-
-import SettingsScreen from '../SettingsScreen';
-
 import { render } from '@/__tests__/test-utils';
 import Colors from '@/constants/Colors';
 import { testIdAppSwitch, testIdSettingPage } from '@/constants/TestId';
+import SettingsScreen from '../SettingsScreen';
 
 describe('<SettingsScreen />', () => {
   test('should render component SettingsScreen', () => {
@@ -13,7 +11,10 @@ describe('<SettingsScreen />', () => {
   });
 
   test('AppSwitch should change theme', () => {
-    const { getByTestId, store: { getState } } = render(<SettingsScreen />);
+    const {
+      getByTestId,
+      store: { getState },
+    } = render(<SettingsScreen />);
     const appSwitch = getByTestId(testIdAppSwitch);
     const initScreenStyles = getByTestId(testIdSettingPage).props.style;
 

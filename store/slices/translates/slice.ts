@@ -1,21 +1,16 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
-
-import type ITranslates from './interfaces/ITranslates';
-
 import i18n from '@/i18n';
+import type ITranslates from './interfaces/ITranslates';
 
 export const initialState: ITranslates = {
   locale: 'en',
   loading: false,
 };
 
-export const setLocale = createAsyncThunk(
-  'translates/setLocale',
-  async (locale:string) => {
-    await i18n.changeLanguage(locale);
-    return locale;
-  },
-);
+export const setLocale = createAsyncThunk('translates/setLocale', async (locale: string) => {
+  await i18n.changeLanguage(locale);
+  return locale;
+});
 
 const translatesSlice = createSlice({
   name: 'translates',
