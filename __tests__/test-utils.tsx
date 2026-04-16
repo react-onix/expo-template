@@ -1,29 +1,20 @@
 import './mocks';
 
-import React from 'react';
-import { Provider } from 'react-redux';
-import { render as rtlRender, renderHook as rtlRenderHook } from '@testing-library/react-native';
-
 import type { RenderOptions } from '@testing-library/react-native';
+import { render as rtlRender, renderHook as rtlRenderHook } from '@testing-library/react-native';
 import type { PropsWithChildren, ReactElement } from 'react';
+import { Provider } from 'react-redux';
+import { makeStore } from '@/store/store';
 import type { AppStore } from '@/store/types/TStore';
 
-import { makeStore } from '@/store/store';
-
 interface ExtendedRenderOptions extends Omit<RenderOptions, 'queries'> {
-  store?: AppStore,
-  preloadedState?: any,
+  store?: AppStore;
+  // biome-ignore lint/suspicious/noExplicitAny: <no reason>
+  preloadedState?: any;
 }
 
-function Wrapper({
-  children,
-  store,
-}: PropsWithChildren<{ store: AppStore }>): ReactElement {
-  return (
-    <Provider store={store}>
-      {children}
-    </Provider>
-  );
+function Wrapper({ children, store }: PropsWithChildren<{ store: AppStore }>): ReactElement {
+  return <Provider store={store}>{children}</Provider>;
 }
 
 export function render(
@@ -36,13 +27,10 @@ export function render(
 ) {
   return {
     store,
-    ...rtlRender(
-      ui,
-      {
-        wrapper: ({ children }) => <Wrapper store={store}>{children}</Wrapper>,
-        ...renderOptions,
-      },
-    ),
+    ...rtlRender(ui, {
+      wrapper: ({ children }) => <Wrapper store={store}>{children}</Wrapper>,
+      ...renderOptions,
+    }),
   };
 }
 
@@ -54,11 +42,8 @@ export function renderHook<Response, Params>(
     ...renderOptions
   }: ExtendedRenderOptions = {},
 ) {
-  return rtlRenderHook(
-    hook,
-    {
-      wrapper: ({ children }) => <Wrapper store={store}>{children}</Wrapper>,
-      ...renderOptions,
-    },
-  );
+  return rtlRenderHook(hook, {
+    wrapper: ({ children }) => <Wrapper store={store}>{children}</Wrapper>,
+    ...renderOptions,
+  });
 }

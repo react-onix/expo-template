@@ -6,18 +6,18 @@ import { testIdAppSwitch } from '@/constants/TestId';
 
 describe('<AppSwitch />', () => {
   test('should render component SettingsScreen', () => {
-    const tree = render(<AppSwitch
-      isEnabled={false}
-      toggleSwitch={() => {}}
-    />).toJSON();
+    const tree = render(
+      <AppSwitch
+        isEnabled={false}
+        toggleSwitch={() => {}}
+      />,
+    ).toJSON();
     expect(tree).toMatchSnapshot();
   });
 
   test('should call toggleSwitch function', () => {
     const onEventMock = jest.fn();
-    const {
-      getByTestId,
-    } = render(
+    const { getByTestId } = render(
       <AppSwitch
         isEnabled={false}
         toggleSwitch={() => onEventMock()}

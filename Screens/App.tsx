@@ -1,11 +1,13 @@
-import { useEffect } from 'react';
-import { Appearance } from 'react-native';
 import { DarkTheme, DefaultTheme, ThemeProvider } from '@react-navigation/native';
 import { Stack } from 'expo-router';
+import { useEffect } from 'react';
+import { Appearance } from 'react-native';
 
 import { useAppSelector } from '@/store/hooks/useApp';
 import selectCurrentTheme from '@/store/slices/theme/selectors';
+
 import setColorScheme = Appearance.setColorScheme;
+
 import i18n from 'i18next';
 
 import selectLocale from '@/store/slices/translates/selectors';
@@ -22,7 +24,10 @@ function App() {
   return (
     <ThemeProvider value={theme === 'dark' ? DarkTheme : DefaultTheme}>
       <Stack>
-        <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
+        <Stack.Screen
+          name="(tabs)"
+          options={{ headerShown: false }}
+        />
         <Stack.Screen name="+not-found" />
       </Stack>
     </ThemeProvider>

@@ -1,4 +1,4 @@
 export default interface TranslatesState {
-  locale: string,
-  loading: boolean,
+  locale: string;
+  loading: boolean;
 }

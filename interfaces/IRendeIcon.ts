@@ -1,6 +1,6 @@
 interface IRenderIcon {
-  color: string,
-  focused: boolean,
+  color: string;
+  focused: boolean;
 }
 
 export default IRenderIcon;

@@ -1,8 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
-
-import type ITheme from './interfaces/ITheme';
-
 import Theme from '@/constants/Theme';
+import type ITheme from './interfaces/ITheme';
 
 export const initialState: ITheme = {
   theme: Theme.light,

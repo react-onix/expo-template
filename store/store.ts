@@ -5,13 +5,12 @@ import {
   FLUSH,
   PAUSE,
   PERSIST,
+  PURGE,
   persistReducer,
   persistStore,
-  PURGE,
   REGISTER,
   REHYDRATE,
 } from 'redux-persist';
-
 import theme from './slices/theme/slice';
 import translates from './slices/translates/slice';
 
@@ -30,15 +29,17 @@ const persistedReducer = persistReducer(
   }),
 );
 
+// biome-ignore lint/suspicious/noExplicitAny: <no reason>
 export function makeStore(preloadedState?: any) {
   return configureStore({
     reducer: persistedReducer,
     preloadedState,
-    middleware: (getDefaultMiddleware) => getDefaultMiddleware({
-      serializableCheck: {
-        ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
-      },
-    }),
+    middleware: (getDefaultMiddleware) =>
+      getDefaultMiddleware({
+        serializableCheck: {
+          ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
+        },
+      }),
   });
 }
 

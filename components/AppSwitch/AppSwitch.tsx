@@ -6,10 +6,10 @@ import { useAppSelector } from '@/store/hooks/useApp';
 import selectCurrentTheme from '@/store/slices/theme/selectors';
 
 interface IAppSwitch {
-  isEnabled: boolean,
-  toggleSwitch: (state:boolean) => void,
+  isEnabled: boolean;
+  toggleSwitch: (state: boolean) => void;
 }
-function AppSwitch({ isEnabled, toggleSwitch }:IAppSwitch) {
+function AppSwitch({ isEnabled, toggleSwitch }: IAppSwitch) {
   const theme = useAppSelector(selectCurrentTheme);
 
   return (
@@ -17,7 +17,7 @@ function AppSwitch({ isEnabled, toggleSwitch }:IAppSwitch) {
       testID={testIdAppSwitch}
       trackColor={Colors[theme].Switch.trackColor}
       thumbColor={Colors[theme].Switch.thumbColor}
-      onValueChange={(val:boolean) => toggleSwitch(val)}
+      onValueChange={(val: boolean) => toggleSwitch(val)}
       value={isEnabled}
     />
   );
